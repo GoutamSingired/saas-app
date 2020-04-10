@@ -1,7 +1,7 @@
 class Member < ApplicationRecord
-   
+
   belongs_to :user
-  acts_as_tenant
+  acts_as_universal_and_determines_account
 
   DEFAULT_ADMIN = {
     first_name: "Admin",
@@ -10,7 +10,7 @@ class Member < ApplicationRecord
 
   def self.create_new_member(user, params)
     # add any other initialization for a new member
-    return user.create_member( params )
+    return user.create_member(params)
   end
 
   def self.create_org_admin(user)
@@ -20,7 +20,7 @@ class Member < ApplicationRecord
     end
 
     return new_member
-      
+
   end
 
 end
